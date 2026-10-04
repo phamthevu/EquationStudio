@@ -1,0 +1,84 @@
+EQUATION STUDIO 1.0 - WINDOWS, OCR OFFLINE
+
+CAI VA CHAY
+1. Cai Python 3.11 ban 64-bit (kem Python Launcher). Windows 10/11 x64.
+2. Giai nen ZIP. Mo thu muc project.
+3. Chay setup_windows.bat. Can Internet de cai thu vien.
+4. Chay prepare_models.bat. Can Internet de tai mo hinh mot lan.
+5. Chay run_app.bat. OCR trong app chan ket noi mang, khong gui anh toi API.
+   Neu chuyen may, can chuan bi mo hinh tren may dich.
+   Co the dung menu Cong cu > Tai/chuan bi mo hinh.
+
+SU DUNG
+- Win + Shift + S, chup cong thuc; trong app bam Dan screenshot/Ctrl+V.
+- Import anh PNG/JPG/BMP/TIFF/WebP; co the chon nhieu anh.
+- Chon anh tren dropdown. Tick Quet moi anh de xu ly ca danh sach.
+- Anh hai trang canh nhau: tick Hai trang canh nhau. App chia tai giua anh,
+  doc het nua trai roi nua phai. Can crop anh neu duong chia khong o giua.
+- Trich cong thuc: phat hien cong thuc doc lap va cong thuc trong doan van.
+- Chi cong thuc dung rieng: bo qua cong thuc inline.
+- Khoanh vung: keo chuot quanh mot cong thuc de nhan dang lai.
+- Ctrl + cuon chuot de zoom; keo anh de di chuyen; Vua khung de reset.
+- Chon cong thuc: app hien vung anh goc, LaTeX va cong thuc dung lai.
+- Sua LaTeX truc tiep. Khong can bam Save rieng cho tung cong thuc.
+- Tick cong thuc can xuat. An cong thuc trung chi an dong va loai dong an
+  khoi xuat; khong xoa ban goc. Cong thuc trung duoc so sanh LaTeX da bo
+  delimiter, khong so sanh tuong duong dai so.
+- Copy Equation: dan Ctrl+V trong Word desktop. Clipboard cung cap MathML.
+  Tuy phien ban Word, dinh dang clipboard co the khong duoc nhan dang.
+  Neu dan thanh text, dung Xuat Word hoac Copy LaTeX:
+  Word Alt + = > chon LaTeX > dan ma > Convert > Professional.
+- Xuat Word: DOCX chua OMML, co the click vao cong thuc va sua trong Word.
+  Chi xuat cac cong thuc da tick va dang hien. Khong xuat anh cong thuc.
+- Luu/Mo project .eqstudio: giu ca anh goc va cong thuc, khong phu thuoc
+  vao duong dan anh cu. File project co the lon neu import nhieu anh.
+- Huy OCR: dung worker, giu ket qua da nhan; cac vung chua xong khong duoc giu.
+- Loi mot anh khong chan cac anh tiep theo. Neu chuyen doi Equation loi,
+  app thong bao cong thuc nao loi va khong ghi file Word thieu cong thuc.
+
+PHAM VI / GIOI HAN
+- Ban dau trich cong thuc, khong xuat lai nguyen trang van ban/bang tieng Viet.
+- Khong suy luan cong thuc nao 'lien quan' ve noi dung; nguoi dung tick chon.
+- Khong tu sua ky hieu hay kiem chung tinh dung cua cong thuc.
+- OCR co the nham mu/pi/vartheta, dau nga, chi so, phan so va ngoac.
+  Luon doi chieu anh goc. Diem OCR khong phai xac suat cong thuc dung.
+- Mot trang nhieu cot phuc tap: khoanh vung tung cot de giu thu tu mong muon.
+- Bang co the sinh cac ung vien cong thuc ngan; bo tick/xoa neu khong can.
+- LaTeX-to-Word khong ho tro tat ca macro/package LaTeX. Preview dung MathML;
+  Word rendering co the khac ve font/spacing. App bao loi lenh chua ho tro.
+- Khong can cai TeX Live/MiKTeX/MathType.
+- App tat telemetry cua Hugging Face, Ultralytics va ONNX Runtime truoc khi nap model.
+- CPU la mac dinh, khong can GPU. Thu vien OCR va model chiem nhieu dung luong.
+- Neu DLL loi tren Windows, cai Microsoft Visual C++ Redistributable x64.
+
+BUILD EXE
+- Chay build_windows.bat tren Windows trong cung thu muc project.
+- Ket qua: dist\EquationStudio\EquationStudio.exe.
+- Phan phoi ca thu muc EquationStudio, khong chi file EXE.
+- EXE co console de OCR worker gui ket qua; khong dong console khi app chay.
+- Model cache khong nhung trong EXE. Tai mot lan tren may dich qua menu Cong cu.
+- Windows build/Paste-to-Word can duoc kiem tra tren may Windows thuc te.
+
+DEPENDENCIES / MODELS
+- PyQt6 + QtWebEngine (GUI/MathML preview), Pillow, lxml.
+- Pix2Text 1.1.7, CPU PyTorch/torchvision, ONNX Runtime, transformers/optimum.
+- latex2mathml, mathml2omml, python-docx (Equation Word).
+- requirements.txt gom cac thu vien app dung truc tiep; phu thuoc OCR duoc pip
+  cai tu metadata cua Pix2Text. installed_versions.txt tao sau setup thanh cong.
+- Model cache theo thu vien Pix2Text/CnOCR/CnSTD/Hugging Face, thuong trong
+  AppData\Roaming\pix2text, cnocr, cnstd va cache Hugging Face cua user.
+- Truoc khi phan phoi thuong mai, xem license cua cac thu vien va tung model.
+
+NGUON THAM KHAO
+https://github.com/breezedeus/Pix2Text
+https://github.com/amedama41/mathml2omml
+https://github.com/roniemartinez/latex2mathml
+https://support.microsoft.com/en-us/word/linear-format-equations-using-unicodemath-and-latex-in-word
+
+TRANG THAI KIEM THU BAN GIAO
+- Da kiem tra GUI, import anh mau, sua LaTeX, clipboard MathML, tick/loc trung.
+- Da kiem tra 7 dang cong thuc xuat thanh OMML va save/load project.
+- Da kiem tra worker bang OCR gia lap: thu tu hai trang, crop va giu ket qua khi loi.
+- Thu nghiem tai/nap model thuc te bi automatic approval review chan do telemetry
+  Microsoft. Da them cau hinh tat telemetry; chua chay lai nhan dang voi model that.
+- Chua build/test EXE Windows hay paste vao Microsoft Word tren Windows.
